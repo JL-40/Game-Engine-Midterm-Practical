@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject bullet;
     Vector3 facing = Vector3.up;
 
+    int lives = 3;
+
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,16 @@ public class PlayerController : MonoBehaviour
             GameObject newBullet = GameObject.Instantiate(bullet);
 
             newBullet.GetComponent<BulletController>().Shoot(facing);
+        }
+    }
+
+    public void LoseLife()
+    {
+        lives--;
+
+        if (lives == 0)
+        {
+            GameManager.Instance.LoseGame();
         }
     }
 }

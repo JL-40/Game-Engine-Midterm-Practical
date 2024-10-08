@@ -29,4 +29,14 @@ public class BulletController : MonoBehaviour
     {
         this.transform.Translate(_direction * speed);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            GameManager.Instance.Score();
+        }
+
+        Destroy(this);
+    }
 }
